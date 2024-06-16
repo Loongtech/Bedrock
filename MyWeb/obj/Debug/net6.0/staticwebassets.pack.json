@@ -1,63 +1,63 @@
 {
   "Files": [
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\css\\FiraCode.css",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\css\\FiraCode.css",
       "PackagePath": "staticwebassets\\css\\FiraCode.css"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\css\\nutssss.css",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\css\\nutssss.css",
       "PackagePath": "staticwebassets\\css\\nutssss.css"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\001.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\001.png",
       "PackagePath": "staticwebassets\\img\\001.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\002.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\002.png",
       "PackagePath": "staticwebassets\\img\\002.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\003.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\003.png",
       "PackagePath": "staticwebassets\\img\\003.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\004.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\004.png",
       "PackagePath": "staticwebassets\\img\\004.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\BP4E.jpg",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\BP4E.jpg",
       "PackagePath": "staticwebassets\\img\\BP4E.jpg"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\LoongTech.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\LoongTech.png",
       "PackagePath": "staticwebassets\\img\\LoongTech.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\bg.jpg",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\bg.jpg",
       "PackagePath": "staticwebassets\\img\\bg.jpg"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\bg1.jpg",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\bg1.jpg",
       "PackagePath": "staticwebassets\\img\\bg1.jpg"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\centos-logo.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\centos-logo.png",
       "PackagePath": "staticwebassets\\img\\centos-logo.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\fish - 副本.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\fish - 副本.png",
       "PackagePath": "staticwebassets\\img\\fish - 副本.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\header-background.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\header-background.png",
       "PackagePath": "staticwebassets\\img\\header-background.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\img\\html-background.png",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\html-background.png",
       "PackagePath": "staticwebassets\\img\\html-background.png"
     },
     {
-      "Id": "D:\\MyWork\\loongtech.net\\wwwroot\\index.html",
+      "Id": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
