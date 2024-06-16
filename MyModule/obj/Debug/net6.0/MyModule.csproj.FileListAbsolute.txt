@@ -1,0 +1,11 @@
+D:\MyWork\loongtech.net\MyModule\bin\Debug\net6.0\OmniCoreX.deps.json
+D:\MyWork\loongtech.net\MyModule\bin\Debug\net6.0\OmniCoreX.dll
+D:\MyWork\loongtech.net\MyModule\bin\Debug\net6.0\OmniCoreX.pdb
+D:\MyWork\loongtech.net\MyModule\obj\Debug\net6.0\MyModule.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyWork\loongtech.net\MyModule\obj\Debug\net6.0\MyModule.AssemblyInfoInputs.cache
+D:\MyWork\loongtech.net\MyModule\obj\Debug\net6.0\MyModule.AssemblyInfo.cs
+D:\MyWork\loongtech.net\MyModule\obj\Debug\net6.0\MyModule.csproj.CoreCompileInputs.cache
+D:\MyWork\loongtech.net\MyModule\obj\Debug\net6.0\OmniCoreX.dll
+D:\MyWork\loongtech.net\MyModule\obj\Debug\net6.0\refint\OmniCoreX.dll
+D:\MyWork\loongtech.net\MyModule\obj\Debug\net6.0\OmniCoreX.pdb
+D:\MyWork\loongtech.net\MyModule\obj\Debug\net6.0\ref\OmniCoreX.dll

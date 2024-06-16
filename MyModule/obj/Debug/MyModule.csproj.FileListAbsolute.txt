@@ -1,0 +1,5 @@
+D:\MyWork\loongtech.net\MyModule\obj\Debug\MyModule.csproj.AssemblyReference.cache
+D:\MyWork\loongtech.net\MyModule\obj\Debug\MyModule.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyWork\loongtech.net\MyModule\obj\Debug\MyModule.AssemblyInfoInputs.cache
+D:\MyWork\loongtech.net\MyModule\obj\Debug\MyModule.AssemblyInfo.cs
+D:\MyWork\loongtech.net\MyModule\obj\Debug\MyModule.csproj.CoreCompileInputs.cache
