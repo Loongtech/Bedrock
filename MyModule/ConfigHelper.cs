@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
+using OracleInternal.Secure.Network;
 
 namespace Net.LoongTech.OmniCoreX
 {
@@ -21,6 +22,7 @@ namespace Net.LoongTech.OmniCoreX
                 })
                 .Build();
         }
+
         /// <summary>
         /// 获取 Oracle 连接字符串
         /// </summary>
@@ -32,22 +34,6 @@ namespace Net.LoongTech.OmniCoreX
                     return AesHelper.Decrypt(Configuration.GetConnectionString("Oracle11G"));
                 else
                     return string.Empty;
-            }
-        }
-
-
-
-        /// <summary>
-        /// 获取 任务DLL 文件所在目录名称
-        /// </summary>
-        public string JobFilePath
-        {
-            get
-            {
-                if (!string.IsNullOrWhiteSpace(Configuration["JobFilePath"].ToString()))
-                    return AppContext.BaseDirectory + Configuration["JobFilePath"].ToString();
-                else
-                    return AppContext.BaseDirectory;
             }
         }
 
@@ -90,5 +76,19 @@ namespace Net.LoongTech.OmniCoreX
             }
         }
 
+        /// <summary>
+        /// 获取代理IP列表
+        /// </summary>
+        public string GetProxyList
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(Configuration["ProxyList_Url"].ToString()))
+                    return Configuration["ProxyList_Url"].ToString();
+                else
+                    return string.Empty;
+            }
+
+        }
     }
 }

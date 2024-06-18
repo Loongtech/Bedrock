@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E2O4YKjUOYXy0eEiI8H21H/uH/fyaMjbp8E7TK41z+Q=",
+  "Hash": "y1lQaQ40JOyOiLI+hG2jSenWffsC8TOVNLp6PygI/W0=",
   "Source": "MyWeb",
   "BasePath": "_content/MyWeb",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "MyWeb\\wwwroot",
       "Source": "MyWeb",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\css\\FiraCode.css",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\css\\FiraCode.css",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "css/FiraCode.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\css\\FiraCode.css"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\css\\nutssss.css",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\css\\nutssss.css",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "css/nutssss.css",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\css\\nutssss.css"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\001.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\001.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/001.png",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\img\\001.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\002.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\002.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/002.png",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\img\\002.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\003.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\003.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/003.png",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\img\\003.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\004.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\004.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/004.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\img\\004.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\bg.jpg",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\bg.jpg",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/bg.jpg",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\img\\bg.jpg"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\bg1.jpg",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\bg1.jpg",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/bg1.jpg",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\img\\bg1.jpg"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\BP4E.jpg",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\BP4E.jpg",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/BP4E.jpg",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\img\\BP4E.jpg"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\centos-logo.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\centos-logo.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/centos-logo.png",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\img\\centos-logo.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\fish - 副本.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\fish - 副本.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/fish - 副本.png",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\img\\fish - 副本.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\header-background.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\header-background.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/header-background.png",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\img\\header-background.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\html-background.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\html-background.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/html-background.png",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\img\\html-background.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\img\\LoongTech.png",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\img\\LoongTech.png",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "img/LoongTech.png",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\img\\LoongTech.png"
     },
     {
-      "Identity": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\index.html",
+      "Identity": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\index.html",
       "SourceId": "MyWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\MyWork\\loongtech.net\\MyWeb\\wwwroot\\",
+      "ContentRoot": "E:\\代码\\上海信龙\\常用的代码\\MyCode\\MyWeb\\wwwroot\\",
       "BasePath": "_content/MyWeb",
       "RelativePath": "index.html",
       "AssetKind": "All",

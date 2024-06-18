@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OmniCoreX")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2b4a5a5f72f57d2c621a3e9ca46b977e61825f4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("OmniCoreX")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OmniCoreX")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
