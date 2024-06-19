@@ -38,6 +38,18 @@ namespace Net.LoongTech.OmniCoreX
         }
 
         /// <summary>
+        /// 任务执行时间间隔,单位分钟
+        /// </summary>
+        public int RunTime
+        {
+            get
+            {
+                int renturnValue = 30;
+                int.TryParse(Configuration["RunTime"].ToString(), out renturnValue);
+                return renturnValue;                 
+            }
+        }
+        /// <summary>
         /// 获取 界面上的操作日志的最大显示行数(仅适用WINDOWS客户端)
         /// </summary>
         public int LogMaxLine

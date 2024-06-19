@@ -29,32 +29,44 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            ListViewItem listViewItem3 = new ListViewItem("");
-            ListViewItem listViewItem4 = new ListViewItem("");
+            ListViewItem listViewItem1 = new ListViewItem("");
+            ListViewItem listViewItem2 = new ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             textBox1 = new TextBox();
             label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            btnSearch = new Button();
+            btnRun = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             splitContainer1 = new SplitContainer();
+            tabPage2 = new TabPage();
+            label2 = new Label();
+            label4 = new Label();
+            tabControl2 = new TabControl();
+            tabPage3 = new TabPage();
+            splitContainer2 = new SplitContainer();
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             listViewEx1 = new ListViewEx(components);
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
-            tabPage2 = new TabPage();
+            tabPage4 = new TabPage();
             lvTxtLog = new ListViewEx(components);
             ch_datetime = new ColumnHeader();
             ch_content = new ColumnHeader();
+            numRunTime = new NumericUpDown();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
-            splitContainer1.Panel1.SuspendLayout();
-            splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            tabControl2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
-            tabPage2.SuspendLayout();
+            tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numRunTime).BeginInit();
             SuspendLayout();
             // 
             // textBox1
@@ -74,25 +86,26 @@
             label1.TabIndex = 1;
             label1.Text = "关键字";
             // 
-            // button1
+            // btnSearch
             // 
-            button1.Location = new Point(304, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 2;
-            button1.Text = "搜索";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnSearch.Location = new Point(304, 12);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(75, 23);
+            btnSearch.TabIndex = 2;
+            btnSearch.Text = "搜索";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += button1_Click;
             // 
-            // button2
+            // btnRun
             // 
-            button2.Location = new Point(483, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 5;
-            button2.Text = "访问";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnRun.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRun.Location = new Point(986, 15);
+            btnRun.Name = "btnRun";
+            btnRun.Size = new Size(75, 23);
+            btnRun.TabIndex = 5;
+            btnRun.Text = "开始";
+            btnRun.UseVisualStyleBackColor = true;
+            btnRun.Click += button2_Click;
             // 
             // tabControl1
             // 
@@ -122,17 +135,79 @@
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(3, 3);
             splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            splitContainer1.Panel1.Controls.Add(webView21);
-            // 
-            // splitContainer1.Panel2
-            // 
-            splitContainer1.Panel2.Controls.Add(listViewEx1);
             splitContainer1.Size = new Size(1054, 611);
-            splitContainer1.SplitterDistance = 549;
+            splitContainer1.SplitterDistance = 449;
             splitContainer1.TabIndex = 5;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 26);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1060, 617);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "日志";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Location = new Point(788, 18);
+            label2.Name = "label2";
+            label2.Size = new Size(20, 17);
+            label2.TabIndex = 7;
+            label2.Text = "每";
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.Location = new Point(867, 18);
+            label4.Name = "label4";
+            label4.Size = new Size(80, 17);
+            label4.TabIndex = 9;
+            label4.Text = "分钟执行一次";
+            // 
+            // tabControl2
+            // 
+            tabControl2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tabControl2.Controls.Add(tabPage3);
+            tabControl2.Controls.Add(tabPage4);
+            tabControl2.Location = new Point(2, 42);
+            tabControl2.Name = "tabControl2";
+            tabControl2.SelectedIndex = 0;
+            tabControl2.Size = new Size(1068, 647);
+            tabControl2.TabIndex = 8;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(splitContainer2);
+            tabPage3.Location = new Point(4, 26);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(1060, 617);
+            tabPage3.TabIndex = 0;
+            tabPage3.Text = "预览";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            splitContainer2.BorderStyle = BorderStyle.FixedSingle;
+            splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.Location = new Point(3, 3);
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(webView21);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(listViewEx1);
+            splitContainer2.Size = new Size(1054, 611);
+            splitContainer2.SplitterDistance = 449;
+            splitContainer2.TabIndex = 5;
             // 
             // webView21
             // 
@@ -142,8 +217,8 @@
             webView21.DefaultBackgroundColor = Color.White;
             webView21.Location = new Point(3, 3);
             webView21.Name = "webView21";
-            webView21.Size = new Size(541, 603);
-            webView21.TabIndex = 4;
+            webView21.Size = new Size(441, 603);
+            webView21.TabIndex = 5;
             webView21.ZoomFactor = 1D;
             // 
             // listViewEx1
@@ -152,11 +227,11 @@
             listViewEx1.Dock = DockStyle.Fill;
             listViewEx1.FullRowSelect = true;
             listViewEx1.GridLines = true;
-            listViewEx1.Items.AddRange(new ListViewItem[] { listViewItem3 });
+            listViewEx1.Items.AddRange(new ListViewItem[] { listViewItem1 });
             listViewEx1.Location = new Point(0, 0);
             listViewEx1.Name = "listViewEx1";
-            listViewEx1.Size = new Size(499, 609);
-            listViewEx1.TabIndex = 0;
+            listViewEx1.Size = new Size(599, 609);
+            listViewEx1.TabIndex = 1;
             listViewEx1.UseCompatibleStateImageBehavior = false;
             listViewEx1.View = View.Details;
             // 
@@ -168,28 +243,28 @@
             // columnHeader2
             // 
             columnHeader2.Text = "结果URL";
-            columnHeader2.Width = 200;
+            columnHeader2.Width = 400;
             // 
-            // tabPage2
+            // tabPage4
             // 
-            tabPage2.Controls.Add(lvTxtLog);
-            tabPage2.Location = new Point(4, 26);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1060, 617);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "日志";
-            tabPage2.UseVisualStyleBackColor = true;
+            tabPage4.Controls.Add(lvTxtLog);
+            tabPage4.Location = new Point(4, 26);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(1060, 617);
+            tabPage4.TabIndex = 1;
+            tabPage4.Text = "日志";
+            tabPage4.UseVisualStyleBackColor = true;
             // 
             // lvTxtLog
             // 
             lvTxtLog.Columns.AddRange(new ColumnHeader[] { ch_datetime, ch_content });
             lvTxtLog.Dock = DockStyle.Fill;
-            lvTxtLog.Items.AddRange(new ListViewItem[] { listViewItem4 });
+            lvTxtLog.Items.AddRange(new ListViewItem[] { listViewItem2 });
             lvTxtLog.Location = new Point(3, 3);
             lvTxtLog.Name = "lvTxtLog";
             lvTxtLog.Size = new Size(1054, 611);
-            lvTxtLog.TabIndex = 0;
+            lvTxtLog.TabIndex = 1;
             lvTxtLog.UseCompatibleStateImageBehavior = false;
             lvTxtLog.View = View.Details;
             // 
@@ -203,14 +278,30 @@
             ch_content.Text = "内容";
             ch_content.Width = 500;
             // 
+            // numRunTime
+            // 
+            numRunTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            numRunTime.Location = new Point(808, 16);
+            numRunTime.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            numRunTime.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numRunTime.Name = "numRunTime";
+            numRunTime.Size = new Size(56, 23);
+            numRunTime.TabIndex = 10;
+            numRunTime.TextAlign = HorizontalAlignment.Center;
+            numRunTime.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1073, 691);
+            Controls.Add(numRunTime);
+            Controls.Add(label4);
+            Controls.Add(tabControl2);
+            Controls.Add(label2);
             Controls.Add(tabControl1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnRun);
+            Controls.Add(btnSearch);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -219,12 +310,17 @@
             Load += FrmMain_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            splitContainer1.Panel1.ResumeLayout(false);
-            splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            tabControl2.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
-            tabPage2.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)numRunTime).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -233,16 +329,25 @@
 
         private TextBox textBox1;
         private Label label1;
-        private Button button1;
-        private Button button2;
+        private Button btnSearch;
+        private Button btnRun;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private SplitContainer splitContainer1;
+        private TabPage tabPage2;
+        private Label label3;
+        private NumericUpDown numericUpDown1;
+        private Label label2;
+        private Label label4;
+        private TabControl tabControl2;
+        private TabPage tabPage3;
+        private SplitContainer splitContainer2;
+        private TabPage tabPage4;
+        private NumericUpDown numRunTime;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private ListViewEx listViewEx1;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
-        private TabPage tabPage2;
         private ListViewEx lvTxtLog;
         private ColumnHeader ch_datetime;
         private ColumnHeader ch_content;
