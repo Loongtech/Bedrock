@@ -88,6 +88,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "ElevateX/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "compile": {
+          "bin/placeholder/ElevateX.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ElevateX.dll": {}
+        }
       }
     }
   },
@@ -429,10 +439,16 @@
         "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "ElevateX/1.0.0": {
+      "type": "project",
+      "path": "../MyProgram/ElevateX/ElevateX.csproj",
+      "msbuildProject": "../MyProgram/ElevateX/ElevateX.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ElevateX >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -469,7 +485,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyProgram\\ElevateX\\ElevateX.csproj": {
+              "projectPath": "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyProgram\\ElevateX\\ElevateX.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -514,5 +534,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "项目 ElevateX 与 net6.0 (.NETCoreApp,Version=v6.0) 不兼容。 项目 ElevateX 支持: net6.0-windows7.0 (.NETCoreApp,Version=v6.0)",
+      "libraryId": "ElevateX",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
