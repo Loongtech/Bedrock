@@ -75,7 +75,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(236, 23);
             textBox1.TabIndex = 0;
-            textBox1.Text = "海顺退费";
+            textBox1.Text = "海顺投顾";
             // 
             // label1
             // 
@@ -306,7 +306,7 @@
             Controls.Add(textBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmMain";
-            Text = "Form1";
+            Text = "自动点击";
             Load += FrmMain_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

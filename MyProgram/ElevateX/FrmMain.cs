@@ -39,10 +39,16 @@ namespace Net.LoongTech.ElevateX
             if (!string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 // 构建百度搜索的URL，包含搜索关键字和其他参数
+               
+                //string url =
+                //    @"https://www.baidu.com/s?" +
+                //    @"ie=utf-8&f=8&rsv_bp=1&tn=baidu&rsv_pq=dac3e43a000957e6&rsv_t=8db1tuoOF1r1dy50%2BjHlWJxmjiif5PSgr8XvoKt3S8UZxK9wC0Bn8pmahPk&rqlang=cn&rsv_dl=tb&rsv_enter=1&rsv_sug3=19&rsv_sug1=1&rsv_sug7=100&rsv_sug2=0&rsv_btype=t&inputT=6393&rsv_sug4=6707" +
+                //    $"&wd={textBox1.Text}&oq={textBox1.Text}";
                 string url =
                     @"https://www.baidu.com/s?" +
-                    @"ie=utf-8&f=8&rsv_bp=1&tn=baidu&rsv_pq=dac3e43a000957e6&rsv_t=8db1tuoOF1r1dy50%2BjHlWJxmjiif5PSgr8XvoKt3S8UZxK9wC0Bn8pmahPk&rqlang=cn&rsv_dl=tb&rsv_enter=1&rsv_sug3=19&rsv_sug1=1&rsv_sug7=100&rsv_sug2=0&rsv_btype=t&inputT=6393&rsv_sug4=6707" +
-                    $"&wd={textBox1.Text}&oq={textBox1.Text}";
+                    @"ie=utf-8&newi=1&mod=1&isbd=1&isid=a6a049d10000bb65&rsv_spt=1&rsv_iqid=0x9ac4b6ec002dd2e8&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_dl=tb&rsv_enter=0&oq=%E6%B5%B7%E9%A1%BA%E6%8A%95%E9%A1%BE&rsv_btype=t&rsv_t=7620ghzUKl0XzEC4EH0j+lUy5c3OeWwo43f0bQdyqB2YqZwagXV+okMBYlKcHkjktYbG&rsv_pq=a6a049d10000bb65&rsv_sid=60271_60338_60332_60346_60359_60376&_ss=1&clist=&hsug=&f4s=1&csor=4&_cr1=38493" +
+                    $"&wd={textBox1.Text}&bs={textBox1.Text}";
+
 
                 // 在webView21中导航到构建的URL
                 webView21.CoreWebView2.Navigate(url);
