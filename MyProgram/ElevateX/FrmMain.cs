@@ -26,38 +26,86 @@ namespace Net.LoongTech.ElevateX
 
             await webView21.EnsureCoreWebView2Async(null);
             webView21.CoreWebView2.Navigate("https://www.baidu.com/");
+
+            webView21.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
         }
 
-        /// <summary>
-        /// 当按钮1被点击时的事件处理程序。
-        /// </summary>
-        /// <param name="sender">事件的发送者，通常是按钮1。</param>
-        /// <param name="e">事件的参数，包含有关事件的详细信息。</param>
-        private void button1_Click(object sender, EventArgs e)
+        private void CoreWebView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
-            // 检查文本框1中的文本是否为空或只包含空白字符
-            if (!string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                // 构建百度搜索的URL，包含搜索关键字和其他参数
-               
-                //string url =
-                //    @"https://www.baidu.com/s?" +
-                //    @"ie=utf-8&f=8&rsv_bp=1&tn=baidu&rsv_pq=dac3e43a000957e6&rsv_t=8db1tuoOF1r1dy50%2BjHlWJxmjiif5PSgr8XvoKt3S8UZxK9wC0Bn8pmahPk&rqlang=cn&rsv_dl=tb&rsv_enter=1&rsv_sug3=19&rsv_sug1=1&rsv_sug7=100&rsv_sug2=0&rsv_btype=t&inputT=6393&rsv_sug4=6707" +
-                //    $"&wd={textBox1.Text}&oq={textBox1.Text}";
-                string url =
-                    @"https://www.baidu.com/s?" +
-                    @"ie=utf-8&newi=1&mod=1&isbd=1&isid=a6a049d10000bb65&rsv_spt=1&rsv_iqid=0x9ac4b6ec002dd2e8&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_dl=tb&rsv_enter=0&oq=%E6%B5%B7%E9%A1%BA%E6%8A%95%E9%A1%BE&rsv_btype=t&rsv_t=7620ghzUKl0XzEC4EH0j+lUy5c3OeWwo43f0bQdyqB2YqZwagXV+okMBYlKcHkjktYbG&rsv_pq=a6a049d10000bb65&rsv_sid=60271_60338_60332_60346_60359_60376&_ss=1&clist=&hsug=&f4s=1&csor=4&_cr1=38493" +
-                    $"&wd={textBox1.Text}&bs={textBox1.Text}";
+            string script = @"
+                // 在页面加载完成后输入 '海顺投顾'
+                let searchBox = document.getElementById('kw');
+                if (searchBox) {
+                    searchBox.value = '海顺投顾';
+                }
 
+                 // 监听搜索按钮点击事件
+                document.getElementById('su').addEventListener('click', function() {
+                    setTimeout(function() {
+                        let links = document.querySelectorAll('a');
+                        let results = [];
+                        links.forEach(function(link) {
+                            results.push({
+                                href: link.href,
+                                text: link.textContent.trim()
+                            });
+                        });
+                        window.chrome.webview.postMessage(JSON.stringify(results));
+                    }, 2000); // 延迟以确保搜索结果加载
+                });
+            ";
 
-                // 在webView21中导航到构建的URL
-                webView21.CoreWebView2.Navigate(url);
-
-                // 注册webView21的NavigationCompleted事件处理程序
-                webView21.CoreWebView2.NavigationCompleted += WebView_NavigationCompleted;
-            }
+            webView21.CoreWebView2.ExecuteScriptAsync(script);
+            webView21.CoreWebView2.WebMessageReceived += CoreWebView2_WebMessageReceived;
         }
 
+        private void CoreWebView2_WebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
+        {
+            // 从 e.WebMessageAsJson 获取消息内容
+            string messageJson = e.WebMessageAsJson;
+
+            // 处理JavaScript执行结果，将JSON字符串转换为C#可用的格式
+            string result = messageJson.Replace("\\\"", "'").Replace("\"", "").Replace("\n","");
+
+            // 使用JsonMapper将处理后的JSON字符串转换为JsonData对象
+            JsonData jsonData = JsonMapper.ToObject(result);
+
+            // 清空列表视图中的项，并准备批量添加搜索结果
+            listViewEx1.Items.Clear();
+            listViewEx1.BeginUpdate();
+
+            foreach (JsonData item in jsonData)
+            {
+                string url = item["href"].ToString().Trim();
+                string title = item["text"].ToString().Trim();
+                if (url.Contains("baidu.com/baidu.php?url=") || url.Contains("baidu.com/link?url="))
+                {
+                    if (!string.IsNullOrEmpty(title) && !HasDuplicateSecondColumn(url))
+                        listViewEx1.Items.Add(new ListViewItem(new[] { item["text"].ToString(), item["href"].ToString() }));
+                }
+            }
+
+            // 结束列表视图的更新，确保界面刷新
+            listViewEx1.EndUpdate();
+        }
+
+        bool HasDuplicateSecondColumn(string _url)
+        {
+            foreach (ListViewItem item in listViewEx1.Items)
+            {
+                string secondColumnValue = item.SubItems[1].Text.Trim();
+
+                // 如果 HashSet 中已经包含当前第二列的值，则表示有重复项
+                if (secondColumnValue.Contains(_url.Trim()))
+                {                    
+                    return true;
+                }                
+            }
+            return false;
+        }
+
+
+       
         /// <summary>
         /// 当WebView导航完成时触发的事件处理程序。
         /// </summary>
@@ -378,4 +426,7 @@ namespace Net.LoongTech.ElevateX
         /// </summary>
         public DateTime ExpireTime;
     }
+
+
+  
 }

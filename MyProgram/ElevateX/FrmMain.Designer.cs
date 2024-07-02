@@ -32,9 +32,6 @@
             ListViewItem listViewItem1 = new ListViewItem("");
             ListViewItem listViewItem2 = new ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            textBox1 = new TextBox();
-            label1 = new Label();
-            btnSearch = new Button();
             btnRun = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -69,37 +66,10 @@
             ((System.ComponentModel.ISupportInitialize)numRunTime).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(62, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(236, 23);
-            textBox1.TabIndex = 0;
-            textBox1.Text = "海顺投顾";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(44, 17);
-            label1.TabIndex = 1;
-            label1.Text = "关键字";
-            // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(304, 12);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(75, 23);
-            btnSearch.TabIndex = 2;
-            btnSearch.Text = "搜索";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += button1_Click;
-            // 
             // btnRun
             // 
             btnRun.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRun.Location = new Point(986, 15);
+            btnRun.Location = new Point(986, 6);
             btnRun.Name = "btnRun";
             btnRun.Size = new Size(75, 23);
             btnRun.TabIndex = 5;
@@ -153,7 +123,7 @@
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(788, 18);
+            label2.Location = new Point(788, 9);
             label2.Name = "label2";
             label2.Size = new Size(20, 17);
             label2.TabIndex = 7;
@@ -163,7 +133,7 @@
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label4.AutoSize = true;
-            label4.Location = new Point(867, 18);
+            label4.Location = new Point(867, 9);
             label4.Name = "label4";
             label4.Size = new Size(80, 17);
             label4.TabIndex = 9;
@@ -174,10 +144,10 @@
             tabControl2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl2.Controls.Add(tabPage3);
             tabControl2.Controls.Add(tabPage4);
-            tabControl2.Location = new Point(2, 42);
+            tabControl2.Location = new Point(2, 6);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(1068, 647);
+            tabControl2.Size = new Size(1068, 683);
             tabControl2.TabIndex = 8;
             // 
             // tabPage3
@@ -186,7 +156,7 @@
             tabPage3.Location = new Point(4, 26);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1060, 617);
+            tabPage3.Size = new Size(1060, 653);
             tabPage3.TabIndex = 0;
             tabPage3.Text = "预览";
             tabPage3.UseVisualStyleBackColor = true;
@@ -205,7 +175,7 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(listViewEx1);
-            splitContainer2.Size = new Size(1054, 611);
+            splitContainer2.Size = new Size(1054, 647);
             splitContainer2.SplitterDistance = 449;
             splitContainer2.TabIndex = 5;
             // 
@@ -217,12 +187,13 @@
             webView21.DefaultBackgroundColor = Color.White;
             webView21.Location = new Point(3, 3);
             webView21.Name = "webView21";
-            webView21.Size = new Size(441, 603);
+            webView21.Size = new Size(441, 643);
             webView21.TabIndex = 5;
             webView21.ZoomFactor = 1D;
             // 
             // listViewEx1
             // 
+            listViewEx1.Activation = ItemActivation.OneClick;
             listViewEx1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
             listViewEx1.Dock = DockStyle.Fill;
             listViewEx1.FullRowSelect = true;
@@ -230,7 +201,7 @@
             listViewEx1.Items.AddRange(new ListViewItem[] { listViewItem1 });
             listViewEx1.Location = new Point(0, 0);
             listViewEx1.Name = "listViewEx1";
-            listViewEx1.Size = new Size(599, 609);
+            listViewEx1.Size = new Size(599, 645);
             listViewEx1.TabIndex = 1;
             listViewEx1.UseCompatibleStateImageBehavior = false;
             listViewEx1.View = View.Details;
@@ -238,12 +209,12 @@
             // columnHeader1
             // 
             columnHeader1.Text = "结果标题";
-            columnHeader1.Width = 200;
+            columnHeader1.Width = 350;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "结果URL";
-            columnHeader2.Width = 400;
+            columnHeader2.Width = 600;
             // 
             // tabPage4
             // 
@@ -251,7 +222,7 @@
             tabPage4.Location = new Point(4, 26);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1060, 617);
+            tabPage4.Size = new Size(1060, 653);
             tabPage4.TabIndex = 1;
             tabPage4.Text = "日志";
             tabPage4.UseVisualStyleBackColor = true;
@@ -263,7 +234,7 @@
             lvTxtLog.Items.AddRange(new ListViewItem[] { listViewItem2 });
             lvTxtLog.Location = new Point(3, 3);
             lvTxtLog.Name = "lvTxtLog";
-            lvTxtLog.Size = new Size(1054, 611);
+            lvTxtLog.Size = new Size(1054, 647);
             lvTxtLog.TabIndex = 1;
             lvTxtLog.UseCompatibleStateImageBehavior = false;
             lvTxtLog.View = View.Details;
@@ -281,7 +252,7 @@
             // numRunTime
             // 
             numRunTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            numRunTime.Location = new Point(808, 16);
+            numRunTime.Location = new Point(808, 7);
             numRunTime.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             numRunTime.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numRunTime.Name = "numRunTime";
@@ -297,13 +268,10 @@
             ClientSize = new Size(1073, 691);
             Controls.Add(numRunTime);
             Controls.Add(label4);
-            Controls.Add(tabControl2);
             Controls.Add(label2);
-            Controls.Add(tabControl1);
             Controls.Add(btnRun);
-            Controls.Add(btnSearch);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(tabControl2);
+            Controls.Add(tabControl1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmMain";
             Text = "自动点击";
@@ -326,10 +294,6 @@
         }
 
         #endregion
-
-        private TextBox textBox1;
-        private Label label1;
-        private Button btnSearch;
         private Button btnRun;
         private TabControl tabControl1;
         private TabPage tabPage1;
