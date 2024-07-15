@@ -49,6 +49,21 @@ namespace Net.LoongTech.OmniCoreX
                 return renturnValue;                 
             }
         }
+
+        /// <summary>
+        /// 搜索关键字
+        /// </summary>
+        public string KeyWord
+        {
+            get
+            {
+                string renturnValue = "海顺投顾";
+                if (!string.IsNullOrWhiteSpace(Configuration["KeyWord"].ToString()))
+                    renturnValue = Configuration["KeyWord"].ToString();
+                return renturnValue;
+            }
+        }
+
         /// <summary>
         /// 获取 界面上的操作日志的最大显示行数(仅适用WINDOWS客户端)
         /// </summary>
