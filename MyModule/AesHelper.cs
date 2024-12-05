@@ -5,8 +5,8 @@ namespace Net.LoongTech.OmniCoreX
 {
     public static class AesHelper
     {
-        private static readonly byte[] DefaultKey = new byte[16];
-        private static readonly byte[] DefaultIV = new byte[16];
+        private static readonly byte[] _defaultKey = new byte[16];
+        private static readonly byte[] _defaultIV = new byte[16];
 
         /// <summary>
         /// 加密
@@ -17,7 +17,7 @@ namespace Net.LoongTech.OmniCoreX
         public static string Encrypt(string plainText, string key = "LoongTech.Net")
         {
             byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-            byte[] ivBytes = DefaultIV;
+            byte[] ivBytes = _defaultIV;
             byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
 
             using Aes aes = Aes.Create();
@@ -43,7 +43,7 @@ namespace Net.LoongTech.OmniCoreX
         public static string Decrypt(string cipherText, string key = "LoongTech.Net")
         {
             byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-            byte[] ivBytes = DefaultIV;
+            byte[] ivBytes = _defaultIV;
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
 
             using Aes aes = Aes.Create();

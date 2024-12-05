@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
-using OracleInternal.Secure.Network;
 
 namespace Net.LoongTech.OmniCoreX
 {

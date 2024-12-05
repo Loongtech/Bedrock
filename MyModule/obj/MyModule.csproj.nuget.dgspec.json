@@ -25,9 +25,7 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
           "https://nuget.cdn.azure.cn/v3/index.json": {}
         },
         "frameworks": {
@@ -44,8 +42,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -53,11 +52,11 @@
           "dependencies": {
             "DocumentFormat.OpenXml": {
               "target": "Package",
-              "version": "[3.0.2, )"
+              "version": "[3.2.0, )"
             },
             "HtmlAgilityPack": {
               "target": "Package",
-              "version": "[1.11.61, )"
+              "version": "[1.11.71, )"
             },
             "LitJson": {
               "target": "Package",
@@ -65,19 +64,19 @@
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.1, )"
             },
             "Oracle.ManagedDataAccess.Core": {
               "target": "Package",
-              "version": "[23.4.0, )"
+              "version": "[23.6.1, )"
             },
             "System.Text.Encoding.CodePages": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0, )"
             },
             "itext7": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -96,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

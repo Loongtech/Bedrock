@@ -14,18 +14,18 @@ namespace Net.LoongTech.OmniCoreX
     public class OracleHelper
     {
         //连接字符串
-        private readonly string connectionString;
+        private readonly string _connectionString;
         //ORACLE 数据库连接对象
-        private OracleConnection connection = null;
+        private OracleConnection? _connection = null;
 
-        public OracleHelper(string _connectionString)
+        public OracleHelper(string connectionString)
         {
-            connectionString = _connectionString;
+            this._connectionString = connectionString;
 
         }
         public OracleHelper()
         {
-            connectionString = new ConfigHelper().OracleConnString;
+            _connectionString = new ConfigHelper().OracleConnString;
 
         }
 
@@ -101,7 +101,7 @@ namespace Net.LoongTech.OmniCoreX
             catch
             {
                 cmd.Dispose();
-                connection.Close();
+                _connection.Close();
                 throw;
             }
         }
@@ -124,7 +124,7 @@ namespace Net.LoongTech.OmniCoreX
             catch
             {
                 cmd.Dispose();
-                connection.Close();
+                _connection.Close();
                 throw;
             }
         }
@@ -158,8 +158,8 @@ namespace Net.LoongTech.OmniCoreX
             finally
             {
                 cmd.Dispose();
-                connection.Close();
-                connection.Dispose();
+                _connection.Close();
+                _connection.Dispose();
             }
 
             return ds;
@@ -192,8 +192,8 @@ namespace Net.LoongTech.OmniCoreX
             finally
             {
                 cmd.Dispose();
-                connection.Close();
-                connection.Dispose();
+                _connection.Close();
+                _connection.Dispose();
             }
 
             return ds;
@@ -229,8 +229,8 @@ namespace Net.LoongTech.OmniCoreX
             finally
             {
                 cmd.Dispose();
-                connection.Close();
-                connection.Dispose();
+                _connection.Close();
+                _connection.Dispose();
             }
 
             return dt;
@@ -265,8 +265,8 @@ namespace Net.LoongTech.OmniCoreX
             finally
             {
                 cmd.Dispose();
-                connection.Close();
-                connection.Dispose();
+                _connection.Close();
+                _connection.Dispose();
             }
 
             return dt;
@@ -296,8 +296,8 @@ namespace Net.LoongTech.OmniCoreX
             finally
             {
                 cmd.Dispose();
-                connection.Close();
-                connection.Dispose();
+                _connection.Close();
+                _connection.Dispose();
             }
 
             return result;
@@ -315,8 +315,8 @@ namespace Net.LoongTech.OmniCoreX
         {
             if (trans == null)
                 throw new ArgumentNullException("当前数据库事务不存在");
-            connection = trans.Connection;
-            if (connection == null)
+            _connection = trans.Connection;
+            if (_connection == null)
                 throw new ArgumentException("当前事务所在的数据库连接不存在");
 
             OracleCommand cmd = new OracleCommand();
@@ -336,8 +336,8 @@ namespace Net.LoongTech.OmniCoreX
             {
                 trans.Dispose();
                 cmd.Dispose();
-                connection.Close();
-                connection.Dispose();
+                _connection.Close();
+                _connection.Dispose();
             }
 
             return result;
@@ -354,10 +354,10 @@ namespace Net.LoongTech.OmniCoreX
         /// <param name="cmdParms">命令参数集合</param>  
         private void PrepareCommand(OracleCommand cmd, OracleTransaction trans, CommandType cmdType, string cmdText, OracleParameter[] cmdParms)
         {
-            if (connection == null || connection.State != ConnectionState.Open)
+            if (_connection == null || _connection.State != ConnectionState.Open)
                 getOracleConnetion();
 
-            cmd.Connection = connection;
+            cmd.Connection = _connection;
             cmd.BindByName = true;  //按照参数名称对应传值
             cmd.CommandText = cmdText;
 
@@ -387,13 +387,13 @@ namespace Net.LoongTech.OmniCoreX
 
             TimeSpan retryInterval = TimeSpan.FromMinutes(RetryInterval); //重试间隔
 
-            if (connection == null || connection.State != ConnectionState.Open)
-                connection = new OracleConnection(connectionString);
+            if (_connection == null || _connection.State != ConnectionState.Open)
+                _connection = new OracleConnection(_connectionString);
             for (int retryCount = 0; retryCount < maxRetries; retryCount++)
             {
                 try
                 {
-                    connection.Open();
+                    _connection.Open();
                     return; // 连接成功，返回
                 }
                 catch

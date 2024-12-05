@@ -1,6 +1,4 @@
-﻿using HtmlAgilityPack;
-using System.Data;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using System.Net;
 using System.Text;
 
@@ -14,34 +12,52 @@ namespace Net.LoongTech.OmniCoreX
 
         private static readonly HttpClient httpClient = CreateHttpClient();
 
+        /// <summary>
+        /// 创建并配置一个 HttpClient 实例。
+        /// </summary>
+        /// <returns>配置好的 HttpClient 实例。</returns>
         private static HttpClient CreateHttpClient()
         {
-            var handler = new HttpClientHandler();
-            handler.UseCookies = true; // 确保使用Cookie容器
+            // 创建一个新的 HttpClient 实例
+            HttpClient client = new HttpClient();
 
-            HttpClient client = new HttpClient(handler);
-            client.Timeout = TimeSpan.FromSeconds(60);
-            client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537");
-            //忽略SSL证书错误
+            // 设置超时时间为 300 秒
+            client.Timeout = TimeSpan.FromSeconds(300);
+
+            // 忽略 SSL 证书错误（不建议在生产环境中使用）
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-            //明确设置TLS协议版本
+
+            // 明确设置 TLS 协议版本
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+            // 返回配置好的 HttpClient 实例
             return client;
         }
 
-        private static void AddHeaders(Dictionary<string, string> _headers, string _referer)
+        /// <summary>
+        /// 向 HttpClient 添加指定的请求头。
+        /// </summary>
+        /// <param name="headers">包含请求头键值对的字典。</param>
+        /// <param name="referer">可选的 Referer 地址。</param>
+        private static void AddHeaders(Dictionary<string, string> headers, string referer)
         {
             // 清除现有的头部信息
             httpClient.DefaultRequestHeaders.Clear();
 
-            if (!string.IsNullOrWhiteSpace(_referer))
-                httpClient.DefaultRequestHeaders.Referrer = new Uri(_referer);
+            // 添加 User-Agent 请求头，模拟浏览器访问
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0");
 
-            if (_headers != null)
+            // 如果 Referer 不为空，则设置 Referer 头
+            if (!string.IsNullOrWhiteSpace(referer))
+                httpClient.DefaultRequestHeaders.Referrer = new Uri(referer);
+
+            // 如果传入的头部信息字典不为空，则逐个添加头部信息
+            if (headers != null)
             {
-                foreach (var header in _headers)
+                foreach (var header in headers)
                 {
-                    if (!httpClient.DefaultRequestHeaders.TryGetValues(header.Key, out _)) //防止添加重复的键值
+                    // 防止添加重复的键值
+                    if (!httpClient.DefaultRequestHeaders.TryGetValues(header.Key, out _))
                     {
                         httpClient.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
                     }
@@ -50,250 +66,262 @@ namespace Net.LoongTech.OmniCoreX
         }
 
         /// <summary>
-        /// 发送GET请求
+        /// 异步执行带有重试机制的操作。
         /// </summary>
-        /// <param name="_jobName">任务名称</param>
-        /// <param name="_url">请求的网址</param>
-        /// <param name="_referer">请求的Referer</param>
-        /// <param name="_header">请求的自定义头</param>
-        /// <param name="_encoding">字符编码，如 Encoding.GetEncoding("GB2312")</param>
-        /// <returns></returns>
-        public static async Task<string> HttpGet(string _jobName, string _url, string _referer = null, Dictionary<string, string> _headers = null, Encoding _encoding = null)
+        /// <param name="operation">要执行的异步操作。</param>
+        /// <param name="url">请求的URL。</param>
+        /// <exception cref="Exception">如果经过所有重试后仍然无法执行请求，将抛出异常。</exception>
+        private static async Task<string> ExecuteWithRetryAsync(Func<Task<string>> operation, string url)
         {
+            // 创建配置帮助器实例
             ConfigHelper configHelper = new ConfigHelper();
-            int maxRetries = configHelper.MaxRetries; //重试次数
-            int RetryInterval = configHelper.RetryInterval;//重试间隔
-            TimeSpan retryInterval = TimeSpan.FromMinutes(RetryInterval); //重试间隔
+
+            // 获取重试间隔（分钟）
+            int RetryInterval = configHelper.RetryInterval;
+            // 将重试间隔转换为 TimeSpan 对象
+            TimeSpan retryInterval = TimeSpan.FromMinutes(RetryInterval);
+
+            // 获取最大重试次数
+            int maxRetries = configHelper.MaxRetries;
+
+            // 初始化重试次数为 0
             int retryAttempt = 0;
 
-            AddHeaders(_headers, _referer);
-
+            // 当重试次数小于等于最大重试次数时，继续尝试
             while (retryAttempt <= maxRetries)
             {
                 try
                 {
-                    // 发送 GET 请求
-                    HttpResponseMessage response = await httpClient.GetAsync(_url);
-                    // 确保请求成功
-                    response.EnsureSuccessStatusCode();
-
-                    // Determine the encoding (if specified, or use default)
-                    Encoding responseEncoding = _encoding ?? Encoding.UTF8;
-                    string responseContent = string.Empty;
-                    // 检查响应头部是否包含 Content - Encoding 字段
-                    if (response.Content.Headers.ContentEncoding.Contains("gzip"))
-                    {
-                        // 解压缩响应内容
-                        using (var decompressedStream = new GZipStream(await response.Content.ReadAsStreamAsync(), CompressionMode.Decompress))
-                        using (var reader = new System.IO.StreamReader(decompressedStream, responseEncoding))
-                        {
-                            responseContent = reader.ReadToEnd();
-                        }
-                    }
-                    else
-                    {
-                        // 读取响应内容
-                        // Read response content as bytes
-                        byte[] responseBytes = await response.Content.ReadAsByteArrayAsync();
-
-                        // Decode the response content using the determined encoding
-                        responseContent = responseEncoding.GetString(responseBytes);
-                    }
-                    return responseContent;
+                    // 尝试执行操作并返回结果
+                    return await operation();
                 }
                 catch (Exception ex)
                 {
-                    // If an exception occurs, check if retries are allowed and wait for the configured interval before retrying.
                     if (retryAttempt < maxRetries)
                     {
+                        // 如果重试次数未达到最大重试次数
                         retryAttempt++;
-                        if (retryInterval != default)
-                        {
-                            new LogHelper().SendEvent(_jobName, $"网站 GET 请求失败,等待 {RetryInterval} 分钟重新请求 ! URL -> {_url}", true);
-                            await Task.Delay(retryInterval);
-                        }
+                        // 发送事件记录请求失败并等待重试间隔时间                        
+                        new LogHelper().SendEvent("OmniCoreX", $"网站请求失败, 等待 {retryInterval.TotalMinutes} 分钟重新请求! URL -> {url}", true);
+                        await Task.Delay(retryInterval);
                     }
                     else
                     {
-                        // If all retries are exhausted, rethrow the exception.
-                        throw new Exception($"经过 {maxRetries} 次重试(每次间隔 {retryInterval.TotalMinutes} 分钟),仍然无法执行网站 GET 请求 !!! URL -> {_url} ");
+                        // 如果经过所有重试后仍然失败，抛出异常
+                        throw new Exception($"经过 {maxRetries} 次重试后，仍然无法执行请求 !!! URL -> {url}", ex);
+                    }
+                }
+            }
+
+            // 默认返回值; 理论上不会到达此行
+            return null;
+        }
+
+        /// <summary>
+        /// 异步读取 HTTP 响应的内容，并根据内容编码进行解压和解码。
+        /// </summary>
+        /// <param name="response">HTTP 响应对象。</param>
+        /// <param name="encoding">字符编码。</param>
+        /// <returns>解码后的响应内容字符串。</returns>
+        private static async Task<string> ReadContentAsync(HttpResponseMessage response, Encoding encoding)
+        {
+            // 从响应内容中异步读取流
+            Stream responseStream = await response.Content.ReadAsStreamAsync();
+
+            // 检查响应内容是否使用了 gzip 压缩
+            if (response.Content.Headers.ContentEncoding.Contains("gzip"))
+            {
+                // 使用 GZipStream 解压响应流
+                using (var decompressedStream = new GZipStream(responseStream, CompressionMode.Decompress))
+                {
+                    // 使用指定的编码创建 StreamReader 并读取解压后的流内容
+                    using (var reader = new StreamReader(decompressedStream, encoding))
+                    {
+                        // 异步读取解压后的流内容并返回
+                        return await reader.ReadToEndAsync();
+                    }
+                }
+            }
+            else
+            {
+                // 如果响应内容没有压缩，直接读取响应内容的字节数组
+                byte[] responseBytes = await response.Content.ReadAsByteArrayAsync();
+                // 使用指定的编码将字节数组转换为字符串并返回
+                return encoding.GetString(responseBytes);
+            }
+        }
+
+        /// <summary>
+        /// 获取网站的 Cookies。
+        /// </summary>
+        /// <returns>返回 Cookies 列表。</returns>
+        public static async Task<List<KeyValuePair<string, string>>> GetCookiesAsync(string url, Dictionary<string, string> headers = null)
+        {
+            if (headers != null)
+                AddHeaders(headers, null);
+
+            var handler = new HttpClientHandler() { UseCookies = true };
+            using (var response = await httpClient.GetAsync(url))
+            {
+                response.EnsureSuccessStatusCode();
+
+                // 从响应中提取 Cookies
+                var cookies = response.Headers.GetValues("Set-Cookie");
+                var cookieList = new List<KeyValuePair<string, string>>();
+
+                foreach (var cookie in cookies)
+                {
+                    var cookieParts = cookie.Split(';');
+                    var keyValue = cookieParts[0].Split('=');
+                    if (keyValue.Length == 2)
+                    {
+                        cookieList.Add(new KeyValuePair<string, string>(keyValue[0], keyValue[1]));
                     }
                 }
 
+                return cookieList;
             }
-            return null; // 这永远不应该达到;只是为了完整性而添加的。
+        }
+
+
+        /// <summary>
+        /// 发送GET请求
+        /// </summary>
+        /// <param name="url">请求的网址</param>
+        /// <param name="referer">请求的Referer</param>
+        /// <param name="headers">请求的自定义头</param>
+        /// <param name="encoding">字符编码，如 Encoding.GetEncoding("GB2312")</param>
+        /// <param name="cookies">cookie</param>
+        /// <returns></returns>
+        public static async Task<string> HttpGet(string url, string referer = null, Dictionary<string, string> headers = null, Encoding encoding = null, List<KeyValuePair<string, string>> cookies = null)
+        {
+            AddHeaders(headers, referer);
+
+            // 如果有 Cookies，添加到请求头
+            if (cookies != null)
+            {
+                var cookieHeader = new StringBuilder();
+                foreach (var cookie in cookies)
+                {
+                    cookieHeader.Append($"{cookie.Key}={cookie.Value}; ");
+                }
+                httpClient.DefaultRequestHeaders.Add("Cookie", cookieHeader.ToString().TrimEnd(' ', ';'));
+            }
+
+            Encoding responseEncoding = encoding ?? Encoding.UTF8;
+
+            return await ExecuteWithRetryAsync(async () =>
+            {
+                using (HttpResponseMessage response = await httpClient.GetAsync(url))
+                {
+                    response.EnsureSuccessStatusCode();
+                    return await ReadContentAsync(response, responseEncoding);
+                }
+            }, url);
         }
 
         ///  <summary>
         /// Post请求发送
         /// </summary>
-        /// <param name="_jobName">任务名称</param>
-        /// <param name="_url">请求的网址</param>
-        /// <param name="_referer">请求的Referer</param>
-        /// <param name="_header">请求的自定义头</param>
-        /// <param name="postParams">传递参数
-        /// Dictionary<string, string> postParams = 
+        /// <param name="requestUrl">请求的网址</param>
+        /// <param name="referer">请求的Referer</param>
+        /// <param name="parameters">传递参数
+        /// Dictionary<string, string> parameters = 
         ///     new Dictionary<string, string>()
         ///     {
         ///         {"say","Hello" },
         ///         {"ask","question" }
         ///     };
         /// </param>
+        /// <param name="cookies">cookies</param>
         /// <returns></returns>
-        public static async Task<string> HttpPost(string _jobName, string _requestUrl, string _referer, Dictionary<string, string> parameters)
+        public static async Task<string> HttpPost(string requestUrl, string referer, Dictionary<string, string> parameters, List<KeyValuePair<string, string>> cookies = null)
         {
-            ConfigHelper configHelper = new ConfigHelper();
-            int maxRetries = configHelper.MaxRetries; //重试次数
-            int RetryInterval = configHelper.RetryInterval;//重试间隔
-            TimeSpan retryInterval = TimeSpan.FromMinutes(RetryInterval); //重试间隔
-            int retryAttempt = 0;
-
-            AddHeaders(null, _referer);
+            AddHeaders(null, referer);
             HttpContent content = new FormUrlEncodedContent(parameters);
 
-            while (retryAttempt <= maxRetries)
+            // 如果有 Cookies，添加到请求头
+            if (cookies != null)
             {
-                try
+                var cookieHeader = new StringBuilder();
+                foreach (var cookie in cookies)
                 {
-                    HttpResponseMessage response = await httpClient.PostAsync(_requestUrl, content);
+                    cookieHeader.Append($"{cookie.Key}={cookie.Value}; ");
+                }
+                httpClient.DefaultRequestHeaders.Add("Cookie", cookieHeader.ToString().TrimEnd(' ', ';'));
+            }
+
+            return await ExecuteWithRetryAsync(async () =>
+            {
+                using (HttpResponseMessage response = await httpClient.PostAsync(requestUrl, content))
+                {
                     response.EnsureSuccessStatusCode();
                     return await response.Content.ReadAsStringAsync();
                 }
-                catch (Exception)
-                {
-                    // If an exception occurs, check if retries are allowed and wait for the configured interval before retrying.
-                    if (retryAttempt < maxRetries)
-                    {
-                        retryAttempt++;
-                        if (retryInterval != default)
-                        {
-                            new LogHelper().SendEvent(_jobName, $"网站 POST 请求失败,等待 {RetryInterval} 分钟重新请求 ! URL -> {_requestUrl}", true);
-                            await Task.Delay(retryInterval);
-                        }
-                    }
-                    else
-                    {
-                        // If all retries are exhausted, rethrow the exception.
-                        throw new Exception($"经过 {maxRetries} 次重试(每次间隔 {retryInterval.TotalMinutes} 分钟),仍然无法执行网站 POST 请求 !!! URL -> {_requestUrl} ");
-                    }
-                }
-
-            }
-            return null; // 这永远不应该达到;只是为了完整性而添加的。
-
+            }, requestUrl);
 
         }
 
         /// <summary>
         /// Post请求Json参数
         /// </summary>
-        /// <param name="_jobName">任务名称</param>
-        /// <param name="_requestUrl"></param>
-        /// <param name="_jsonParams"></param>
+        /// <param name="requestUrl"></param>
+        /// <param name="jsonParams"></param>
         /// <returns></returns>
-        public static async Task<string> HttpPost(string _jobName, string _requestUrl, string _referer, string _jsonParams)
+        public static async Task<string> HttpPost(string requestUrl, string referer, string jsonParams, bool isJson = false)
         {
-            ConfigHelper configHelper = new ConfigHelper();
-            int maxRetries = configHelper.MaxRetries; //重试次数
-            int RetryInterval = configHelper.RetryInterval;//重试间隔
-            TimeSpan retryInterval = TimeSpan.FromMinutes(RetryInterval); //重试间隔
-            int retryAttempt = 0;
+            AddHeaders(null, referer);
 
-            AddHeaders(null, _referer);
-            HttpContent content = new StringContent(_jsonParams, Encoding.UTF8, "application/x-www-form-urlencoded");
-
-            while (retryAttempt <= maxRetries)
+            HttpContent content;
+            if (isJson)
             {
-                try
-                {
-                    HttpResponseMessage response = await httpClient.PostAsync(_requestUrl, content);
-                    response.EnsureSuccessStatusCode();
-                    return await response.Content.ReadAsStringAsync();
-                }
-                catch (Exception)
-                {
-                    // If an exception occurs, check if retries are allowed and wait for the configured interval before retrying.
-                    if (retryAttempt < maxRetries)
-                    {
-                        retryAttempt++;
-                        if (retryInterval != default)
-                        {
-                            new LogHelper().SendEvent("WebDataCapture", $"网站 POST 请求失败,等待 {RetryInterval} 分钟重新请求 ! URL -> {_requestUrl}", true);
-                            await Task.Delay(retryInterval);
-                        }
-                    }
-                    else
-                    {
-                        // If all retries are exhausted, rethrow the exception.
-                        throw new Exception($"经过 {maxRetries} 次重试(每次间隔 {retryInterval.TotalMinutes} 分钟),仍然无法执行网站 POST 请求 !!! URL -> {_requestUrl} ");
-                    }
-                }
-
+                content = new StringContent(jsonParams, Encoding.UTF8, "application/json");
             }
-            return null; // 这永远不应该达到;只是为了完整性而添加的。
-        }
+            else
+            {
+                content = new StringContent(jsonParams, Encoding.UTF8, "application/x-www-form-urlencoded");
+            }
 
+            return await ExecuteWithRetryAsync(async () =>
+            {
+                using (HttpResponseMessage response = await httpClient.PostAsync(requestUrl, content))
+                {
+                    response.EnsureSuccessStatusCode();
+                    return await ReadContentAsync(response, Encoding.UTF8); // 返回 Task<string> 类型
+                }
+            }, requestUrl);
+        }
 
         /// <summary>
         /// Post请求Json参数
         /// </summary>
-        /// <param name="_jobName">任务名称</param>
-        /// <param name="_requestUrl"></param>
-        /// <param name="_jsonParams"></param>
+        /// <param name="requestUrl"></param>
+        /// <param name="jsonParams"></param>
         /// <returns></returns>
-        public static async Task<string> HttpPost(string _jobName, string _requestUrl, string _jsonParams)
+        public static async Task<string> HttpPost(string requestUrl, string jsonParams)
         {
-            ConfigHelper configHelper = new ConfigHelper();
-            int maxRetries = configHelper.MaxRetries; //重试次数
-            int RetryInterval = configHelper.RetryInterval;//重试间隔
-            TimeSpan retryInterval = TimeSpan.FromMinutes(RetryInterval); //重试间隔
-            int retryAttempt = 0;
+            HttpContent content = new StringContent(jsonParams, Encoding.UTF8, "application/x-www-form-urlencoded");
 
-            HttpContent content = new StringContent(_jsonParams, Encoding.UTF8, "application/x-www-form-urlencoded");
-
-            while (retryAttempt <= maxRetries)
+            return await ExecuteWithRetryAsync(async () =>
             {
-                try
+                using (HttpResponseMessage response = await httpClient.GetAsync(requestUrl))
                 {
-                    HttpResponseMessage response = await httpClient.PostAsync(_requestUrl, content);
                     response.EnsureSuccessStatusCode();
-                    return await response.Content.ReadAsStringAsync();
+                    return await ReadContentAsync(response, Encoding.UTF8); // 返回 Task<string> 类型
                 }
-                catch (Exception)
-                {
-                    // If an exception occurs, check if retries are allowed and wait for the configured interval before retrying.
-                    if (retryAttempt < maxRetries)
-                    {
-                        retryAttempt++;
-                        if (retryInterval != default)
-                        {
-                            new LogHelper().SendEvent(_jobName, $"网站 POST 请求失败,等待 {RetryInterval} 分钟重新请求 ! URL -> {_requestUrl}", true);
-                            await Task.Delay(retryInterval);
-                        }
-                    }
-                    else
-                    {
-                        // If all retries are exhausted, rethrow the exception.
-                        throw new Exception($"经过 {maxRetries} 次重试(每次间隔 {retryInterval.TotalMinutes} 分钟),仍然无法执行网站 POST 请求 !!! URL -> {_requestUrl} ");
-                    }
-                }
-
-            }
-            return null; // 这永远不应该达到;只是为了完整性而添加的。
+            }, requestUrl);
         }
-
-
 
         /// <summary>
         /// 下载文件
         /// </summary>
-        /// <param name="_requestUrl">下载地址</param>
+        /// <param name="requestUrl">下载地址</param>
         /// <param name="_referer">Referer</param>
         /// <param name="_header">Header</param>
-        /// <param name="_fileName">文件名</param>
-        /// <param name="_filePath">文件路径</param>
+        /// <param name="fileName">文件名</param>
+        /// <param name="filePath">文件路径</param>
         /// <returns></returns>
-        public static async Task<string> HttpDownFile(string _jobName, string _requestUrl, string _fileName, string _filePath)
+        public static async Task<string> HttpDownFile(string requestUrl, string fileName, string filePath)
         {
             try
             {
@@ -301,21 +329,20 @@ namespace Net.LoongTech.OmniCoreX
                 // Ignore SSL certificate errors
                 httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0");
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-                httpClient.Timeout = new TimeSpan(0, 0, 0, 60);//超时60秒
+                httpClient.Timeout = new TimeSpan(0, 0, 0, 300);//超时300秒
                 // Set TLS protocol version explicitly
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-
-                HttpResponseMessage response = await httpClient.GetAsync(_requestUrl);
+                HttpResponseMessage response = await httpClient.GetAsync(requestUrl);
                 response.EnsureSuccessStatusCode();
 
                 //判断指定的目录是否存在
-                if (!Directory.Exists(_filePath))
-                    Directory.CreateDirectory(_filePath);//如果不存就创建
+                if (!Directory.Exists(filePath))
+                    Directory.CreateDirectory(filePath);//如果不存就创建
 
 
                 // 将文件内容保存到本地
-                string localFile = Path.Combine(_filePath, _fileName);
+                string localFile = Path.Combine(filePath, fileName);
                 await using var fileStream = File.Create(localFile);
                 await response.Content.CopyToAsync(fileStream);
 
@@ -326,11 +353,10 @@ namespace Net.LoongTech.OmniCoreX
             }
             catch (Exception ex)
             {
-                new LogHelper().SendEvent(_jobName, $"根据URL -> {_requestUrl} 下载附件时出错 -> {ex.Message}", true); //发送消息通知        
+                new LogHelper().SendEvent("OmniCoreX", $"根据URL -> {requestUrl} 下载附件时出错 -> {ex.Message}", true); //发送消息通知        
                 return string.Empty;
             }
         }
-
 
         /// <summary>
         /// 去除html标签
@@ -350,17 +376,15 @@ namespace Net.LoongTech.OmniCoreX
             return strText;
         }
 
-
-
         /// <summary>
         /// 转换 Unicode 字符串
         /// </summary>
-        /// <param name="_unicodeString">Unicode 字符串</param>
+        /// <param name="unicodeString">Unicode 字符串</param>
         /// <returns></returns>
-        public static string DecodeUnicodeString(string _unicodeString)
+        public static string DecodeUnicodeString(string unicodeString)
         {
 
-            string[] unicodeSegments = _unicodeString.Split(new[] { "\\u" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] unicodeSegments = unicodeString.Split(new[] { "\\u" }, StringSplitOptions.RemoveEmptyEntries);
             var builder = new StringBuilder();
 
             foreach (string segment in unicodeSegments)
@@ -370,42 +394,6 @@ namespace Net.LoongTech.OmniCoreX
             }
 
             return builder.ToString();
-        }
-
-        /// <summary>
-        /// 将 HTML 中的表格转换为 DataTable
-        /// </summary>
-        /// <param name="_htmlTable"></param>
-        /// <returns></returns>
-        public static DataTable HtmlTableToDataTable(HtmlNode _htmlTable)
-        {
-            DataTable returnValue = new DataTable();
-            bool isHead = true;//是否是列头
-            foreach (HtmlNode row in _htmlTable.SelectNodes(@".//tr"))
-            {
-                if (isHead)
-                {
-                    foreach (HtmlNode cell in row.SelectNodes(@".//th|.//td"))
-                    {
-                        DataColumn dc1 = new DataColumn(HttpHelper.ReplaceHtmlTag(cell.InnerText));
-                        returnValue.Columns.Add(dc1);
-                    }
-                    isHead = false;
-                }
-                else
-                {
-                    DataRow dr = returnValue.NewRow();
-                    int i = 0;
-                    foreach (HtmlNode cell in row.SelectNodes(@".//th|.//td"))
-                    {
-                        dr[i] = HttpHelper.ReplaceHtmlTag(cell.InnerText);
-                        i++;
-                    }
-                    returnValue.Rows.Add(dr);
-                }
-            }
-
-            return returnValue;
         }
     }
 }
