@@ -12,7 +12,7 @@ namespace Net.LoongTech.OmniCoreX
         /// 将Excel单一表转化为DataTable对象
         /// </summary>
         /// <param name="sheetName">SheetName</param>
-        /// <param name="stream">Excel文件路径</param>
+        /// <param name="filePath">Excel文件路径</param>
         /// <returns>DataTable对象</returns>
         public DataTable ExcelToDataTable(string sheetName, string filePath)
         {
@@ -46,7 +46,7 @@ namespace Net.LoongTech.OmniCoreX
         /// <summary>
         /// 将Excel第一张表转化为DataTable对象
         /// </summary>       
-        /// <param name="stream">Excel文件路径</param>
+        /// <param name="filePath">Excel文件路径</param>
         /// <returns>DataTable对象</returns>
         public DataTable ExcelToDataTable(string filePath)
         {
@@ -99,7 +99,7 @@ namespace Net.LoongTech.OmniCoreX
         /// 根据WorkbookPart和表名创建DataTable对象
         /// </summary>
         /// <param name="workBookPart">WorkbookPart对象</param>
-        /// <param name="tableName">表名</param>
+        /// <param name="sheetName">表名</param>
         /// <returns>转化后的DataTable</returns>
         private DataTable WorkSheetToTable(WorkbookPart workBookPart, string sheetName)
         {
@@ -450,8 +450,6 @@ namespace Net.LoongTech.OmniCoreX
             }
             sw.Close();
             fs.Close();
-
         }
-
     }
 }

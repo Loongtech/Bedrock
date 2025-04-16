@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Net.LoongTech.OmniCoreX
+﻿namespace Net.LoongTech.OmniCoreX
 {
     /// <summary>
     /// 消息通知事件处理类
@@ -12,7 +6,7 @@ namespace Net.LoongTech.OmniCoreX
     public class AlarmHelper
     {
         //定义一个私有变量instance
-        private static AlarmHelper instance;
+        private static AlarmHelper _instance;
 
         //定义一个静态方法Instance，返回AlarmHelper实例
         public static AlarmHelper Instance
@@ -20,12 +14,12 @@ namespace Net.LoongTech.OmniCoreX
             get
             {
                 //如果instance为空，则实例化一个AlarmHelper实例
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = new AlarmHelper();
+                    _instance = new AlarmHelper();
                 }
                 //返回AlarmHelper实例
-                return instance;
+                return _instance;
             }
         }
 
