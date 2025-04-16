@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyWeb\\MyWeb.csproj": {}
+    "C:\\MyWork\\LoongTech.Net\\MyWeb\\MyWeb.csproj": {}
   },
   "projects": {
-    "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyWeb\\MyWeb.csproj": {
+    "C:\\MyWork\\LoongTech.Net\\MyWeb\\MyWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyWeb\\MyWeb.csproj",
+        "projectUniqueName": "C:\\MyWork\\LoongTech.Net\\MyWeb\\MyWeb.csproj",
         "projectName": "MyWeb",
-        "projectPath": "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyWeb\\MyWeb.csproj",
-        "packagesPath": "C:\\Users\\LoongTech\\.nuget\\packages\\",
-        "outputPath": "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyWeb\\obj\\",
+        "projectPath": "C:\\MyWork\\LoongTech.Net\\MyWeb\\MyWeb.csproj",
+        "packagesPath": "C:\\Users\\吴志强\\.nuget\\packages\\",
+        "outputPath": "C:\\MyWork\\LoongTech.Net\\MyWeb\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\LoongTech\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\吴志强\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,8 +23,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.cdn.azure.cn/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {

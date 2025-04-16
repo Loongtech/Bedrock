@@ -7022,24 +7022,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LoongTech\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\吴志强\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyModule\\MyModule.csproj",
+      "projectUniqueName": "C:\\MyWork\\LoongTech.Net\\MyModule\\MyModule.csproj",
       "projectName": "OmniCoreX",
-      "projectPath": "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyModule\\MyModule.csproj",
-      "packagesPath": "C:\\Users\\LoongTech\\.nuget\\packages\\",
-      "outputPath": "E:\\代码\\上海信龙\\常用的代码\\LoongTech.Net\\MyModule\\obj\\",
+      "projectPath": "C:\\MyWork\\LoongTech.Net\\MyModule\\MyModule.csproj",
+      "packagesPath": "C:\\Users\\吴志强\\.nuget\\packages\\",
+      "outputPath": "C:\\MyWork\\LoongTech.Net\\MyModule\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\LoongTech\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\吴志强\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7048,8 +7043,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.cdn.azure.cn/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
