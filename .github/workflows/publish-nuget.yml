@@ -40,7 +40,7 @@ jobs:
           dotnet pack Data/Bedrock.Data.csproj --configuration Release --no-build -o ./packages
           dotnet pack Logging/Bedrock.Logging.csproj --configuration Release --no-build -o ./packages
           dotnet pack Security/Bedrock.Security.csproj --configuration Release --no-build -o ./packages
-          dotnet pack Algorithms/Algorithms.csproj --configuration Release --no-build -o ./packages
+          dotnet pack Algorithms/Bedrock.Algorithms.csproj --configuration Release --no-build -o ./packages
           # 如果未来有新项目，在这里继续添加
 
       # 步骤 6: 发布到 GitHub Packages
