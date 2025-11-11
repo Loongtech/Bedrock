@@ -39,7 +39,7 @@ jobs:
           dotnet pack Core/Bedrock.Core.csproj --configuration Release --no-build -o ./packages
           dotnet pack Data/Bedrock.Data.csproj --configuration Release --no-build -o ./packages
           dotnet pack Logging/Bedrock.Logging.csproj --configuration Release --no-build -o ./packages
-          dotnet Security/Bedrock.Security.csproj --configuration Release --no-build -o ./packages
+          dotnet pack Security/Bedrock.Security.csproj --configuration Release --no-build -o ./packages
           dotnet pack Algorithms/Algorithms.csproj --configuration Release --no-build -o ./packages
           # 如果未来有新项目，在这里继续添加
 

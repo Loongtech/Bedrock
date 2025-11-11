@@ -17,5 +17,9 @@
         <RepositoryUrl>https://github.com/Loongtech/Bedrock.git</RepositoryUrl>
         <Description>Bedrock 安全库，提供加密、解密、哈希等安全相关的操作。</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>

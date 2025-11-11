@@ -17,6 +17,7 @@
         <RepositoryUrl>https://github.com/Loongtech/Bedrock.git</RepositoryUrl>
         <Description>Bedrock 数据库访问助手</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,5 +27,6 @@
         <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.9.1" />
         <PackageReference Include="Quartz" Version="3.13.1" />
         <PackageReference Include="MySqlConnector" Version="2.4.0" />
+        <None Include="README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

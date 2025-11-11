@@ -18,5 +18,9 @@
         <RepositoryUrl>https://github.com/Loongtech/Bedrock.git</RepositoryUrl>
         <Description>Bedrock 核心工具库，提供通用扩展方法和反射助手。</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile> 
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>
