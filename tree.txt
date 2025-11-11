@@ -1,0 +1,40 @@
+卷 新加卷 的文件夹 PATH 列表
+卷序列号为 2890-1E17
+D:.
+|   .gitattributes
+|   .gitignore
+|   Net.LoongTech.Bedrock.Libraries.sln
+|   readme.txt
+|   StartGemini.ps1
+|   tree.txt
+|   
++---Core
+|   |   Bedrock.Core.csproj
+|   |   
+|   |           
+|   +---Extensions
+|   |       CollectionExtensions.cs
+|   |       StringExtensions.cs
+|   |  
+|   |               
+|   +---Reflection
+|   |       ReflectionHelper.cs
+|   |       
+|   \---Types
+|           TypeHelper.cs
+|           
++---Data
+|   |   Bedrock.Data.csproj
+|   |   IAdvancedDbHelper.cs
+|   |   IDbHelper.cs
+|   |   MySqlHelper.cs
+|   |   OracleBlobParameter.cs
+|   |   OracleHelper.cs
+|   |   SqlServerHelper.cs
+|                   
+\---Logging
+    |   Bedrock.Logging.csproj
+    |   CustomConsoleFormatter.cs
+    |   CustomFileLoggerProvider.cs
+    |   LoggerHelper.cs
+   

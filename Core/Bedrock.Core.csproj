@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	  <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Company>www.loongtech.net</Company>
+    <RootNamespace>Net.LoongTech.Bedrock.Core</RootNamespace>
+    <PackageId>Net.LoongTech.Bedrock.Core</PackageId>
+    <Title>核心组件</Title>
+    <Authors>LoongTech</Authors>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Product>Bedrock Libraries</Product>
+    <Copyright>Bedrock 核心工具库，提供通用扩展方法和反射助手。</Copyright>
+	  <PackageOutputPath>D:\MyWork\成都乾隆\代码\上海信龙\常用的代码\LocalNuGetFeed</PackageOutputPath>
+  </PropertyGroup>	
+</Project>

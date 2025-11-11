@@ -7,9 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "数据库助手", "数据�
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "日志助手", "日志助手", "{A8816ED9-688D-4E2A-BE00-F515C6450983}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.LoongTech.Bedrock.Data", "Data\Net.LoongTech.Bedrock.Data.csproj", "{78CCA08C-6534-6777-7DC4-E0C77AAC48C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bedrock.Data", "Data\Bedrock.Data.csproj", "{78CCA08C-6534-6777-7DC4-E0C77AAC48C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.LoongTech.Bedrock.Logging", "Logging\Net.LoongTech.Bedrock.Logging.csproj", "{F7B09EAC-E293-A3C9-06DC-76932496E8AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bedrock.Logging", "Logging\Bedrock.Logging.csproj", "{F7B09EAC-E293-A3C9-06DC-76932496E8AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "核心基础组件", "核心基础组件", "{19F653CD-B6EC-4339-9DAF-327FCE78A82F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bedrock.Core", "Core\Bedrock.Core.csproj", "{1DBF4B12-FB43-8AA3-8C79-91268657BDF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,10 @@ Global
 		{F7B09EAC-E293-A3C9-06DC-76932496E8AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7B09EAC-E293-A3C9-06DC-76932496E8AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7B09EAC-E293-A3C9-06DC-76932496E8AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DBF4B12-FB43-8AA3-8C79-91268657BDF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DBF4B12-FB43-8AA3-8C79-91268657BDF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DBF4B12-FB43-8AA3-8C79-91268657BDF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DBF4B12-FB43-8AA3-8C79-91268657BDF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{78CCA08C-6534-6777-7DC4-E0C77AAC48C2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F7B09EAC-E293-A3C9-06DC-76932496E8AD} = {A8816ED9-688D-4E2A-BE00-F515C6450983}
+		{1DBF4B12-FB43-8AA3-8C79-91268657BDF9} = {19F653CD-B6EC-4339-9DAF-327FCE78A82F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {89E46265-6B7E-4151-B316-EF9176E02275}
