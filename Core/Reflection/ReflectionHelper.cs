@@ -89,9 +89,9 @@ namespace Net.LoongTech.Bedrock.Core.Reflection
             }
             catch (Exception ex)
             {
-                // 建议记录日志
-                // Console.WriteLine($"创建类型 '{type.FullName}' 的实例失败: {ex.Message}");
-                return default(T);
+                // 建议记录日志                 
+                Console.WriteLine($"创建类型 '{type.FullName}' 的实例失败: {ex.Message}");
+                return default;
             }
         }
 

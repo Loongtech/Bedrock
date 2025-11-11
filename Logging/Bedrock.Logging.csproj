@@ -8,13 +8,17 @@
 		<Nullable>enable</Nullable>
 		<Company>www.loongtech.net</Company>
 		<RootNamespace>Net.LoongTech.Bedrock.Logging</RootNamespace>
-		<PackageId>Net.LoongTech.Bedrock.Logging</PackageId>
-		<Title>日志助手</Title>
-		<Authors>LoongTech</Authors>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Product>Bedrock Libraries</Product>
-		<Description>Bedrock 的日志助手工具库。</Description>
-		<PackageOutputPath>D:\MyWork\成都乾隆\代码\上海信龙\常用的代码\LocalNuGetFeed</PackageOutputPath>
+        <!-- 关键的包信息 -->
+        <PackageId>Net.LoongTech.Bedrock.Logging</PackageId>
+        <Version>1.0.0</Version>
+        <Title>日志助手</Title>
+        <Authors>LoongTech</Authors>
+        <Company>www.loongtech.net</Company>
+        <Product>Bedrock Libraries</Product>
+        <RepositoryUrl>https://github.com/Loongtech/Bedrock.git</RepositoryUrl>
+        <Description>Bedrock 的日志助手工具库。</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>       
+       
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />

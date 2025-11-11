@@ -54,7 +54,7 @@ namespace Net.LoongTech.Bedrock.Data
             }
         }
 
-        public async Task<T> QueryFirstOrDefaultAsync<T>(
+        public async Task<T?> QueryFirstOrDefaultAsync<T>(
             string sql,
             object? parameters = null,
             int commandTimeout = 30

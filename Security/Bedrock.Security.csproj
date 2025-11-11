@@ -1,20 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-	  <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <Company>www.loongtech.net</Company>
-    <RootNamespace>Net.LoongTech.Bedrock.Security</RootNamespace>
-    <PackageId>Net.LoongTech.Bedrock.Security</PackageId>
-    <Title>安全库组件</Title>
-    <Authors>LoongTech</Authors>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Product>Bedrock Libraries</Product>
-    <Copyright></Copyright>
-	  <PackageOutputPath>D:\MyWork\成都乾隆\代码\上海信龙\常用的代码\LocalNuGetFeed</PackageOutputPath>
-	  <Description>Bedrock 安全库，提供加密、解密、哈希等安全相关的操作。</Description>
-  </PropertyGroup>	
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>       
+        <RootNamespace>Net.LoongTech.Bedrock.Security</RootNamespace>
+        <!-- 关键的包信息 -->
+        <PackageId>Net.LoongTech.Bedrock.Security</PackageId>
+        <Version>1.0.0</Version>
+        <Title>安全库组件</Title>
+        <Authors>LoongTech</Authors>
+        <Company>www.loongtech.net</Company>
+        <Product>Bedrock Libraries</Product>
+        <RepositoryUrl>https://github.com/Loongtech/Bedrock.git</RepositoryUrl>
+        <Description>Bedrock 安全库，提供加密、解密、哈希等安全相关的操作。</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
 </Project>
