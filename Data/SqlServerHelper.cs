@@ -100,7 +100,7 @@ namespace Net.LoongTech.Bedrock.Data
             }
         }
 
-        public async Task<T> ExecuteScalarAsync<T>(
+        public async Task<T?> ExecuteScalarAsync<T>(
             string sql,
             object? parameters = null,
             int commandTimeout = 30

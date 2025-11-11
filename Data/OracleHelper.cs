@@ -78,7 +78,7 @@ namespace Net.LoongTech.Bedrock.Data
         /// <param name="sql">SQL 查询语句</param>
         /// <param name="parameters">查询参数（可选）</param>
         /// <returns>查询结果的第一行，如果没有结果则返回默认值</returns>
-        public async Task<T> QueryFirstOrDefaultAsync<T>(
+        public async Task<T?> QueryFirstOrDefaultAsync<T>(
             string sql,
             object? parameters = null,
             int commandTimeout = 30
@@ -143,7 +143,7 @@ namespace Net.LoongTech.Bedrock.Data
         /// <param name="sql">SQL 查询语句</param>
         /// <param name="parameters">查询参数（可选）</param>
         /// <returns>查询结果的第一个值</returns>
-        public async Task<T> ExecuteScalarAsync<T>(
+        public async Task<T?> ExecuteScalarAsync<T>(
             string sql,
             object? parameters = null,
             int commandTimeout = 30

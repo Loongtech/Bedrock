@@ -16,7 +16,7 @@ namespace Net.LoongTech.Bedrock.Data
         /// <summary>
         /// 异步执行查询，并返回第一行结果，如果无结果则返回默认值。
         /// </summary>
-        Task<T> QueryFirstOrDefaultAsync<T>(string sql, object? parameters = null, int commandTimeout = 30);
+        Task<T?> QueryFirstOrDefaultAsync<T>(string sql, object? parameters = null, int commandTimeout = 30);
 
         /// <summary>
         /// 异步执行非查询 SQL 语句（如 INSERT, UPDATE, DELETE）。
@@ -33,7 +33,7 @@ namespace Net.LoongTech.Bedrock.Data
         /// <param name="sql">要执行的 SQL 查询。</param>
         /// <param name="parameters">查询参数（可选），使用匿名对象。</param>
         /// <returns>标量值。</returns>
-        Task<T> ExecuteScalarAsync<T>(string sql, object? parameters = null, int commandTimeout = 30);
+        Task<T?> ExecuteScalarAsync<T>(string sql, object? parameters = null, int commandTimeout = 30);
 
         // --- 向后兼容的 DataTable 方法 ---
         /// <summary>

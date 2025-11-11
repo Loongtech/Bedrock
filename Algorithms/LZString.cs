@@ -620,7 +620,7 @@ namespace Net.LoongTech.Bedrock.Algorithms
                     }
                     else
                     {
-                        return null;
+                        return string.Empty;
                     }
                 }
                 result.Append(entry);

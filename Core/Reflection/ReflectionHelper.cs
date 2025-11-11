@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Collections.Generic;
+﻿using System.Reflection;
 
 namespace Net.LoongTech.Bedrock.Core.Reflection
 {
@@ -36,7 +32,7 @@ namespace Net.LoongTech.Bedrock.Core.Reflection
             catch (Exception ex) // 例如 FileNotFoundException
             {
                 // 建议记录日志
-                // Console.WriteLine($"加载程序集 '{assemblyName}' 失败: {ex.Message}");
+                Console.WriteLine($"加载程序集 '{assemblyName}' 失败: {ex.Message}");
                 return null;
             }
         }
@@ -63,7 +59,7 @@ namespace Net.LoongTech.Bedrock.Core.Reflection
             catch (Exception ex)
             {
                 // 建议记录日志
-                // Console.WriteLine($"从文件 '{assemblyFilePath}' 加载程序集失败: {ex.Message}");
+                Console.WriteLine($"从文件 '{assemblyFilePath}' 加载程序集失败: {ex.Message}");
                 return null;
             }
         }
@@ -120,7 +116,7 @@ namespace Net.LoongTech.Bedrock.Core.Reflection
             catch (Exception ex)
             {
                 // 建议记录日志
-                // Console.WriteLine($"获取属性 '{propertyName}' 的值失败: {ex.Message}");
+                Console.WriteLine($"获取属性 '{propertyName}' 的值失败: {ex.Message}");
                 return null;
             }
         }
@@ -155,7 +151,7 @@ namespace Net.LoongTech.Bedrock.Core.Reflection
             catch (Exception ex)
             {
                 // 建议记录日志
-                // Console.WriteLine($"设置属性 '{propertyName}' 的值失败: {ex.Message}");
+                Console.WriteLine($"设置属性 '{propertyName}' 的值失败: {ex.Message}");
                 return false;
             }
         }
@@ -255,7 +251,7 @@ namespace Net.LoongTech.Bedrock.Core.Reflection
             catch (Exception ex)
             {
                 // 建议记录日志
-                // Console.WriteLine($"从文件 '{assemblyFilePath}' 加载类型失败: {ex.Message}");
+                Console.WriteLine($"从文件 '{assemblyFilePath}' 加载类型失败: {ex.Message}");
                 return Type.EmptyTypes;
             }
         }

@@ -6,7 +6,6 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Company>www.loongtech.net</Company>
 		<RootNamespace>Net.LoongTech.Bedrock.Logging</RootNamespace>
         <!-- 关键的包信息 -->
         <PackageId>Net.LoongTech.Bedrock.Logging</PackageId>
