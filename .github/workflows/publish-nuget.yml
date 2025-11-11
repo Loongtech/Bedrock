@@ -13,6 +13,11 @@ jobs:
     # 在最新的 Ubuntu 虚拟机上运行
     runs-on: ubuntu-latest
 
+    # 关键修复：为 GITHUB_TOKEN 授予写入包的权限
+    permissions:
+      contents: read
+      packages: write
+      
     steps:
       # 步骤 1: 检出代码
       - name: Checkout repository
