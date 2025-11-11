@@ -225,9 +225,9 @@ namespace Net.LoongTech.Bedrock.Core.Reflection
             }
             catch (ReflectionTypeLoadException ex) // 特殊处理加载类型时的错误
             {
-                // 当程序集引用的某些依赖项找不到时，GetTypes() 会抛出此异常
-                // 但我们可以从异常中提取已经成功加载的类型
-                return ex.Types.Where(t => t != null).ToArray();
+                // 使用 LINQ 的 Where() 方法过滤掉所有 null 元素
+                // 这样返回的就是一个纯净的、不含 null 的 Type[] 数组
+                return ex.Types.Where(t => t != null).ToArray()!;
             }
         }
 

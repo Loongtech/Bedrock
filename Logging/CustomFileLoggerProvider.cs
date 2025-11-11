@@ -50,7 +50,11 @@ namespace Net.LoongTech.Bedrock.Logging
         /// <typeparam name="TState">状态类型</typeparam>
         /// <param name="state">作用域状态</param>
         /// <returns>可释放的作用域对象</returns>
-        public IDisposable? BeginScope<TState>(TState state) => null;
+        public IDisposable BeginScope<TState>(TState state)
+        {
+            // 始终返回一个非null的实例
+            return NullScope.Instance;
+        }
 
         /// <summary>
         /// 检查指定日志级别是否启用
@@ -102,5 +106,12 @@ namespace Net.LoongTech.Bedrock.Logging
                 File.AppendAllText(filePath, logRecord.ToString());
             }
         }
+    }
+
+    internal class NullScope : IDisposable
+    {
+        public static NullScope Instance { get; } = new NullScope();
+        private NullScope() { }
+        public void Dispose() { }
     }
 }
