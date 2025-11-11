@@ -1,0 +1,48 @@
+# 工作流名称
+name: Publish Bedrock NuGet Packages
+
+# 触发条件: 当代码被推送到 master 分支时
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  # 定义一个名为 "publish" 的作业
+  publish:
+    # 在最新的 Ubuntu 虚拟机上运行
+    runs-on: ubuntu-latest
+
+    steps:
+      # 步骤 1: 检出代码
+      - name: Checkout repository
+        uses: actions/checkout@v4 # 使用最新的 checkout action
+
+      # 步骤 2: 设置 .NET 环境
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.x' # 确认这是您项目使用的.NET版本
+
+      # 步骤 3: 恢复依赖
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # 步骤 4: 编译项目
+      - name: Build project
+        run: dotnet build --configuration Release --no-restore
+
+      # 步骤 5: 打包所有需要发布的项目
+      # 为每个需要发布的库项目添加一行 dotnet pack 命令
+      - name: Pack projects
+        run: |
+          dotnet pack Core/Bedrock.Core.csproj --configuration Release --no-build -o ./packages
+          dotnet pack Data/Bedrock.Data.csproj --configuration Release --no-build -o ./packages
+          dotnet pack Logging/Bedrock.Logging.csproj --configuration Release --no-build -o ./packages
+          dotnet Security/Bedrock.Security.csproj --configuration Release --no-build -o ./packages
+          dotnet pack Algorithms/Algorithms.csproj --configuration Release --no-build -o ./packages
+          # 如果未来有新项目，在这里继续添加
+
+      # 步骤 6: 发布到 GitHub Packages
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push "packages/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/Loongtech" --skip-duplicate
