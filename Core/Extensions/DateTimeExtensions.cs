@@ -1,5 +1,8 @@
-﻿namespace Net.LoongTech.Bedrock.Core.Extensions
+﻿using System.Text.RegularExpressions;
+
+namespace Net.LoongTech.Bedrock.Core.Extensions
 {
+    
     /// <summary>
     /// 提供一系列针对 System.DateTime 和 long 类型的扩展方法，用于Unix时间戳转换。
     /// </summary>

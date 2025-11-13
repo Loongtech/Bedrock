@@ -6,20 +6,33 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>       
-        <RootNamespace>Net.LoongTech.Bedrock.Security</RootNamespace>
+        <RootNamespace>Net.LoongTech.Bedrock.Http</RootNamespace>
         <!-- 关键的包信息 -->
-        <PackageId>Net.LoongTech.Bedrock.Security</PackageId>
+        <PackageId>Net.LoongTech.Bedrock.Http</PackageId>
         <Version>1.1.0</Version>
-        <Title>安全库组件</Title>
+        <Title>Web助手组件</Title>
         <Authors>LoongTech</Authors>
         <Company>www.loongtech.net</Company>
         <Product>Bedrock Libraries</Product>
         <RepositoryUrl>https://github.com/Loongtech/Bedrock.git</RepositoryUrl>
-        <Description>Bedrock 安全库，提供加密、解密、哈希等安全相关的操作。</Description>
+        <Description>Bedrock 的Web助手，提供http的访问等功能。</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <AssemblyName>Bedrock.HttpClient.json</AssemblyName>
     </PropertyGroup>
+
     <ItemGroup>
-        <None Include="README.md" Pack="true" PackagePath="\"/>
+      <None Remove="Bedrock.HttpClient.json" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Bedrock.HttpClient.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup> 
+	<ItemGroup>
+		<PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 </Project>

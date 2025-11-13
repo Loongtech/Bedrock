@@ -10,7 +10,7 @@
 
         <!-- 关键的包信息 -->
         <PackageId>Net.LoongTech.Bedrock.Algorithms</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.1.0</Version>
         <Title>算法库</Title>
         <Authors>LoongTech</Authors>
         <Company>www.loongtech.net</Company>
